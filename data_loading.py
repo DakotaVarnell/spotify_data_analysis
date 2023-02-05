@@ -1,20 +1,23 @@
-import csv
-# with open('C:\Users\varne\Desktop\Spotify Data\Spotify_final_dataset.csv', newline='') as csvfile:
-#     spamreader = csv.reader(csvfile)
-
-#     for row in range(len(spamreader)-10000):
-#         print(row)
-
+#import csv library
 import csv
 
-with open('employee_birthday.txt') as csv_file:
+#create a list where we will be storing the row information
+row_information = []
+
+#open the csv file and read it 
+with open('Spotify_final_dataset.csv', encoding="utf8") as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
-    line_count = 0
+
+    #iterate through each row and read them into a python list
     for row in csv_reader:
-        if line_count == 0:
-            print(f'Column names are {", ".join(row)}')
-            line_count += 1
-        else:
-            print(f'\t{row[0]} works in the {row[1]} department, and was born in {row[2]}.')
-            line_count += 1
-    print(f'Processed {line_count} lines.')
+        row_information.append(row)
+
+#open the file we will be writing to
+file = open('load_spotify_table.sql', 'a')
+
+#dynamically create the sql to insert each of the values, i being the particular row and the other index being the data member of the list that corresponds to the value in oracle
+for i in range(10):
+    insert_stmt = 'INSERT INTO spotify_data VALUES(' + row_information[i][0] + ',' + row_information[i][1] + ',' + row_information[i][2] + ',' + row_information[i][3] + ',' + row_information[i][4] + ',' + row_information[i][5] + ',' + row_information[i][6] + ',' + row_information[i][7] + ');\n'
+    file.write(insert_stmt)
+    
+
