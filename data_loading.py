@@ -22,5 +22,9 @@ for i in range(len(row_information)):
     insert_stmt = 'INSERT INTO spotify_data VALUES(' + row_information[i][0] + ',' + "'" + str(row_information[i][1]).replace("'", "").replace(",","") + "'" + ',' + "'" + str(row_information[i][2]).replace(",", "").replace("'", "") + "'" + ',' + row_information[i][3] + ',' + row_information[i][4] + ',' + "'" + row_information[i][5] + "'" + ',' + "'" + row_information[i][6] + "'" + ',' + row_information[i][7] + ');\n'
     file.write(insert_stmt)
 
-    
-
+#-----TO DO
+#-----Delete the old oracle from your system
+#-----Download the newest version of oracle
+#-----Get the connection information and connect it to python
+#-----Get Cx_Oracle to run your table creation commands
+#-----Get Cx_Oracle to run your insertion statements
